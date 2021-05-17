@@ -1,12 +1,19 @@
+import env from "react-dotenv"
 
+console.log('env', env)
 
-const base: string = 'http://localhost:3002/api'
+const base: string = env.URL
 
 
 const apiString = {
   text: `${base}/text`,
   vocabulary: `${base}/vocabulary`,
-  script: `${base}/script`
+  script: `${base}/script`,
+  sound: `${base}/playSound`
 }
 
 export default apiString
+
+// npm run build
+// tar -zcvf build.tar.gz build
+// echo 5566 | scp -S taka@203.204.160.248:/home/taka/project/frontend/vocabulary-trainer

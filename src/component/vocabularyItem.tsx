@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import scriptApi from '../api/script'
+import soundApi from '../api/sound'
 import textApi from '../api/text'
 import vocabularyApi from '../api/vocabulary'
 import Button from '@material-ui/core/Button'
@@ -51,6 +52,16 @@ const VocabularyItem = (props: any) => {
     props.refreshVocabulary()
   }
 
+  const playSound = async() => {
+    const res = await soundApi.playSound(props.vocabulary)
+    // console.log(res)
+    const blob = new Blob([res], {type: 'audio/ogg'})
+    const audio = new Audio();
+    audio.src = URL.createObjectURL(blob);
+    audio.load()
+    audio.play()
+  }
+
   return (
     <div className={style.vocabularyItemWrapper}>
       <div className={style.left}>
@@ -62,6 +73,7 @@ const VocabularyItem = (props: any) => {
           />
           <div>{props.vocabulary}</div>
           <Button onClick={delClick}>del</Button>
+          <Button onClick={playSound}>play</Button>
         </div>
         <div>
           {textList.map((item: any, index: number)=> {
