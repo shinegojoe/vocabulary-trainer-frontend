@@ -1,25 +1,26 @@
 import apiString from './apiString'
 import instance from './instance'
 import { AxiosRequestConfig } from 'axios'
+import { Text, IResp } from '../type/api.type'
 
-const getText = async(vid: number) => {
+const getText = async(vId: number) => {
   const cfg: AxiosRequestConfig = {
     method: 'GET',
     url: apiString.text,
     params: {
-      vid: vid
+      vId
     }
   }
-  const res = await instance.run(cfg)
+  const res = await instance.run(cfg) as IResp<Text[]>
   return res
 }
 
-const add = async(vid: number, text: string) => {
+const add = async(vId: number, text: string) => {
   const cfg: AxiosRequestConfig = {
     method: 'POST',
     url: apiString.text,
     data: {
-      vid,
+      vId,
       text
     }
   }
