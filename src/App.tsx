@@ -1,7 +1,8 @@
 import logo from './logo.svg'
 import './App.css'
 import Main from './component/main'
-import Home from './component/home'
+// import Home from './component/main/main'
+import { Router } from './router/router'
 
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
   return (
     <div className="App">
       {/* <Main></Main> */}
-      <Home></Home>
+      {/* <Home></Home> */}
+      <Router></Router>
     </div>
   );
 }
