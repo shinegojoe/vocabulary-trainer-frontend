@@ -42,10 +42,10 @@ const PageMain = (props: RouterProps) => {
     }
 
     return (
-        <div>
+        <div className={style.vocabularyContainer}>
             page
             {page.id}
-            <div className={style.addWrapper}>
+            <div className={style.vocabularyItemWrapper}>
                 <TextField color='secondary' onChange={inputUpdate} id="add-page" label="new page"/>
                 <Button color='secondary' onClick={addClick}>add</Button>
             </div>
