@@ -44,10 +44,17 @@ const TextItem = (props: IProps) => {
         return res
     }
 
+    const mUp = () => {
+        const selection = window.getSelection()
+        const text = selection?.toString()
+        console.log('mup', text)
+
+    }
+
     return (
         <div className={style.textItemWrapper}>
             <div className={style.sentenceWrapper}>
-                <div>{textFilter(props.text.text)}</div>
+                <div onMouseUp={mUp}>{textFilter(props.text.text)}</div>
                 <div>
                     <IconButton onClick={playSound}>
                         <PlayCircleFilledIcon></PlayCircleFilledIcon>
