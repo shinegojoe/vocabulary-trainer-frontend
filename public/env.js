@@ -1,3 +1,3 @@
 window.env = {
-  "URL": "http://localhost:3033/api"
+  "URL": "http://203.204.160.248:3033/api"
 };

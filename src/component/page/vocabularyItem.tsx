@@ -3,6 +3,7 @@ import { Vocabulary, Script, Text } from '../../type/api.type'
 import vocabularyApi from '../../api/vocabulary'
 import scriptApi from '../../api/script'
 import textApi from '../../api/text'
+import soundApi from '../../api/sound'
 
 /* ui part ... */
 import ScriptItem from './scriptItem'
@@ -87,6 +88,17 @@ const VocabularyItem = (props: IProps) => {
 
         }
     }
+
+    const playSound = async() => {
+        const res = await soundApi.playSound(props.vocabulary.vocabulary)
+        console.log(res)
+        const blob = new Blob([res], {type: 'audio/ogg'})
+        console.log('bbb', blob)
+        const audio = new Audio()
+        audio.src = URL.createObjectURL(blob)
+        audio.load()
+        audio.play()
+    }
     
     return (
         <div>
@@ -104,7 +116,7 @@ const VocabularyItem = (props: IProps) => {
                     <IconButton onClick={getScriptClick}>
                         <TextFieldsIcon></TextFieldsIcon>
                     </IconButton>
-                    <IconButton>
+                    <IconButton onClick={playSound}>
                         <PlayCircleFilledIcon></PlayCircleFilledIcon>
                     </IconButton>
                 </div>
