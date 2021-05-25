@@ -5,6 +5,7 @@ import textApi from '../../api/text'
 import soundApi from '../../api/sound'
 import translateApi from '../../api/translate'
 import { useDispatch, useSelector } from 'react-redux'
+import translateAction from '../../action/translateStyle.action'
 
 
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled'
@@ -80,12 +81,16 @@ const TextItem = (props: IProps) => {
         if(textList.length === 1) {
             const res = await translateApi.translate(text)
             console.log(res.data.text)
-            const action = {
-                type: 'test',
-                x: e.clientX,
-                y: e.clientY,
-                word: res.data.text
-              }
+            // const action = {
+            //     type: 'test',
+            //     x: e.clientX,
+            //     y: e.clientY,
+            //     word: res.data.text
+            // }
+            const x = e.clientX
+            const y = e.clientY
+            const word = res.data.text
+            const action = translateAction.translateHintUpdate(x, y, word)
             dispatch(action)
         }
         

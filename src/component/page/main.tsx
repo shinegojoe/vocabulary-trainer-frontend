@@ -43,9 +43,8 @@ const PageMain = (props: RouterProps) => {
 
     return (
         <div className={style.vocabularyContainer}>
-            page
-            {page.id}
-            <div className={style.vocabularyItemWrapper}>
+            <div className={style.title}>{page.name}</div>
+            <div className={style.addWrapper}>
                 <TextField color='secondary' onChange={inputUpdate} id="add-page" label="new page"/>
                 <Button color='secondary' onClick={addClick}>add</Button>
             </div>

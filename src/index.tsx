@@ -6,8 +6,9 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 // import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom'
 import rootReducer from './reducer/index'
-import { createStore } from "redux"
+import { createStore, Action } from "redux"
 import { Provider } from "react-redux"
+
 
 
 

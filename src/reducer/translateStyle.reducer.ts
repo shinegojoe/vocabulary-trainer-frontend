@@ -1,31 +1,29 @@
+import { IAction } from '../action/IAction'
+import { TranslateHint, actionString } from '../action/translateStyle.action'
 
 
-type TranslateHintStyle = {
-  left: number
-  top: number
-}
-
-const initState = {
+const initState: TranslateHint = {
   left: 0,
   top: 0,
-  backgroundColor: 'red',
-  // width: '10px',
-  // height: '10px',
   word: ''
 }
 
-const updateStyle = (state: TranslateHintStyle) => {
-
+const updateStyle = (state: TranslateHint, action: IAction<TranslateHint>) => {
+  const newState = {...state}
+  newState.left = action.payload.left
+  newState.top = action.payload.top - 30
+  newState.word = action.payload.word
+  return newState
 }
 
-const translateStyleReducer = (state=initState, action: any) => {
+const translateStyleReducer = (state=initState, action: IAction<any>) => {
   console.log('acc', action)
-  const newState = {...state}
-  newState.left = action.x
-  newState.top = action.y
-  newState.word = action.word
-
-  return newState
+  
+  if(action.type === actionString.hintUpdate) {
+    return updateStyle(state, action)
+  }
+  
+  return state
 }
 
 export { translateStyleReducer }
