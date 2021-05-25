@@ -27,3 +27,7 @@ export type Vocabulary = {
     checked: boolean
     pageId: number
 }
+
+export type Translate = {
+    text: string
+}

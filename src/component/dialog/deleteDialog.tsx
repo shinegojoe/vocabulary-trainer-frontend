@@ -23,7 +23,7 @@ const DeleteDialog = (props: IProps) => {
 
 
 
-    console.log('style', style)
+    // console.log('style', style)
     return (
         <div className={style.xxContainer}>
             <Dialog  open={props.isOpen}>

@@ -10,7 +10,8 @@ const apiString = {
   vocabulary: `${base}/vocabulary`,
   script: `${base}/script`,
   sound: `${base}/sound`,
-  page: `${base}/page`
+  page: `${base}/page`,
+  translate: `${base}/translate`
 }
 
 export default apiString
