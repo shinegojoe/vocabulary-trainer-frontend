@@ -4,6 +4,8 @@ import Button from '@material-ui/core/Button'
 import textApi from '../../api/text'
 import soundApi from '../../api/sound'
 import translateApi from '../../api/translate'
+import { useDispatch, useSelector } from 'react-redux'
+
 
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled'
 import IconButton from '@material-ui/core/IconButton'
@@ -25,6 +27,7 @@ const TextItem = (props: IProps) => {
         left: 100
 
     }
+    const dispatch = useDispatch()
 
     const [ hintStyle, setHintStyle] = useState(tt)
 
@@ -58,14 +61,10 @@ const TextItem = (props: IProps) => {
     }
 
     const mUp = async(e: any) => {
-        // console.log('e', e)
-
-        const x = {...hintStyle}
-        x.left = -(e.screenX)
-        x.top = e.screenY
-        console.log('x', x.left, 'y', x.top)
+        console.log('e', e)
         
-        setHintStyle(x)
+
+      
         const selection = window.getSelection()
         const text = selection?.toString()
 
@@ -81,7 +80,15 @@ const TextItem = (props: IProps) => {
         if(textList.length === 1) {
             const res = await translateApi.translate(text)
             console.log(res.data.text)
+            const action = {
+                type: 'test',
+                x: e.clientX,
+                y: e.clientY,
+                word: res.data.text
+              }
+            dispatch(action)
         }
+        
 
     }
 

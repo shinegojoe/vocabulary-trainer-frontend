@@ -5,7 +5,13 @@ import App from './App';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 // import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom'
+import rootReducer from './reducer/index'
+import { createStore } from "redux"
+import { Provider } from "react-redux"
 
+
+
+const store = createStore(rootReducer)
 
 const theme = createMuiTheme({
     palette: {
@@ -23,9 +29,11 @@ const theme = createMuiTheme({
 ReactDOM.render(
     <React.Fragment>
         <ThemeProvider theme={theme}>
-            <Router>
-                <App />
-            </Router>
+            <Provider store={store}>
+                <Router>
+                    <App />
+                </Router>
+            </Provider>
         </ThemeProvider>
     </React.Fragment>,
     document.getElementById('root')
