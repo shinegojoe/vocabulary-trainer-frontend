@@ -1,4 +1,4 @@
-import { useEffect,  useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import {  RouterProps } from 'react-router-dom'
 import { Page, Vocabulary } from '../../type/api.type'
 import vocabularyApi from '../../api/vocabulary'
@@ -16,6 +16,8 @@ const PageMain = (props: RouterProps) => {
     const page = props.history.location.state as Page
     const [ vocabularyList, setVocabularyList ] = useState<Vocabulary[]>([])
     const [ vocabulary, setVocabulary ] = useState('')
+    // const inputEl = useRef<any>(null)
+    const [ inputEl, setInputEl ] = useState<any>(undefined)
 
     useEffect(()=> {
         getVocabularyList()
@@ -27,6 +29,7 @@ const PageMain = (props: RouterProps) => {
     }
 
     const inputUpdate = (e: any) => {
+        setInputEl(e)
         const val = e.target.value
         setVocabulary(val)
     }
@@ -36,16 +39,24 @@ const PageMain = (props: RouterProps) => {
             const pageId = page.id as number
             const res = await vocabularyApi.add(vocabulary, pageId)
             getVocabularyList()
+            inputEl.target.value = ''
         } catch(e) {
 
         }
     }
 
+    const keyUp = (e: any) => {
+        // console.log(e)
+        if(e.key === 'Enter') {
+            addClick()
+        }
+    }
+
     return (
-        <div className={style.vocabularyContainer}>
+        <div onKeyUp={keyUp} className={style.vocabularyContainer}>
             <div className={style.title}>{page.name}</div>
             <div className={style.addWrapper}>
-                <TextField color='secondary' onChange={inputUpdate} id="add-page" label="new page"/>
+                <TextField  color='secondary' onChange={inputUpdate} id="add-page" label="new page"/>
                 <Button color='secondary' onClick={addClick}>add</Button>
             </div>
             <div>

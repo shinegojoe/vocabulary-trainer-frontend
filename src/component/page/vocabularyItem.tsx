@@ -29,6 +29,7 @@ const VocabularyItem = (props: IProps) => {
     const [isDelOpen, setIsDelOpen] = useState(false)
     const [ scriptList, setScriptList ] = useState<Script[]>([])
     const [ textList, setTextList ] = useState<Text[]>([])
+    const [ isCloseOn, setIsCloseOn ] = useState<boolean>(false)
 
     useEffect(()=> {
         getTextList()
@@ -84,6 +85,7 @@ const VocabularyItem = (props: IProps) => {
         try {
             const res = await scriptApi.getScript('the big bang theory', props.vocabulary.vocabulary)
             setScriptList(res.data)
+            setIsCloseOn(true)
         } catch(e) {
 
         }
@@ -98,6 +100,11 @@ const VocabularyItem = (props: IProps) => {
         audio.src = URL.createObjectURL(blob)
         audio.load()
         audio.play()
+    }
+
+    const close = () => {
+        setScriptList([])
+        setIsCloseOn(false)
     }
     
     return (
@@ -133,6 +140,9 @@ const VocabularyItem = (props: IProps) => {
                 {scriptList.map((item, index)=> {
                     return <ScriptItem key={index} script={item} vId={vId} getTextList={getTextList}></ScriptItem>
                 })}
+            </div>
+            <div>
+                {isCloseOn && <Button onClick={close}>close</Button>}
             </div>
             <DeleteDialog close={closeDelete} ok={deleteVocabulary} isOpen={isDelOpen}></DeleteDialog>
             <EditDialog close={closeEdit} ok={editVocabulary} isOpen={isEditOpen}></EditDialog>
