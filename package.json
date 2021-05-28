@@ -28,7 +28,8 @@
     "start": "react-dotenv && react-scripts start",
     "build": "react-dotenv && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "jest": "jest"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +50,10 @@
     ]
   },
   "devDependencies": {
+    "faker": "^5.5.3",
+    "jest-cli": "^27.0.1",
+    "jest-puppeteer": "^5.0.4",
+    "puppeteer": "^9.1.1",
     "sass": "^1.32.11",
     "sass-loader": "^11.0.1"
   },

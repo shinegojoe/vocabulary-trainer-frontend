@@ -3,25 +3,36 @@ import logo from './logo.svg'
 import { Router } from './router/router'
 import AppBar from './component/appBar'
 import style from '../src/sass/app.module.sass'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import TranslateHintItem from './component/page/translateHintItem'
+import { TranslateHint, TranslateStyle } from './action/translateStyle.action'
 
 
 function App() {
 
-  const xx = useSelector((state: any)=> {
+  const translateHint = useSelector((state: any)=> {
     console.log('state', state)
-    return state.translateStyle
+    // setQq(state.translateStyle.style)
+    return state.translateStyle as TranslateHint
   })
+
+  const translateStyle: TranslateStyle = {
+    top: translateHint.top,
+    left: translateHint.left,
+    word: translateHint.word
+  }
+
+  const isShow = translateHint.isShow
 
 
   return (
     <div className={style.app}>
       <AppBar></AppBar>
       <Router></Router>
-      <div className={style.hint} style={xx}>
-        <TranslateHintItem word={xx.word}></TranslateHintItem>
-      </div>
+      {isShow && <div className={style.hint} style={translateStyle}>
+         <TranslateHintItem word={translateStyle.word}></TranslateHintItem>
+      </div>}
+      
     </div>
   );
 }

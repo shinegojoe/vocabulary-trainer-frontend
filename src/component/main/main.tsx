@@ -51,7 +51,19 @@ const Home = (props: RouterProps) => {
         <div className={style.pageContainer}>
             <div className={style.addWrapper}>
                 <TextField color='secondary' onChange={inputUpdate} id="add-page" label="new page"/>
-                <Button color='secondary' onClick={addClick}>add</Button>
+                <Button data-testId="add-page-btn" color='secondary' onClick={addClick}>add</Button>
+            </div>
+            <div className="testBtn" data-testId="qqBtn">
+                test
+                <span>this is in span</span>
+                <span>222</span>
+
+            </div>
+            <div className="moreTestBtn" data-testId="qqBtn2">
+                test2
+            </div>
+            <div className="moreTestBtn" data-testId="qqBtn3">
+                test3
             </div>
             <div  className={style.pageWrapper}>
                 {pageList.map((item: Page, index: number)=> {

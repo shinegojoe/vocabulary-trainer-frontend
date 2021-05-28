@@ -97,12 +97,18 @@ const TextItem = (props: IProps) => {
 
     }
 
+    const mouseLeave = () => {
+        console.log('leave')
+        const action = translateAction.isShow(false)
+        dispatch(action)
+    }
+
     
 
     return (
         <div className={style.textItemWrapper}>
             <div className={style.sentenceWrapper}>
-                <div onMouseUp={mUp}>{textFilter(props.text.text)}</div>
+                <div onMouseUp={mUp} onMouseLeave={mouseLeave}>{textFilter(props.text.text)}</div>
                 <div>
                     <IconButton onClick={playSound}>
                         <PlayCircleFilledIcon></PlayCircleFilledIcon>

@@ -16,10 +16,14 @@ const PageItem = (props: IProps)=> {
         return `img_${i+1}.jpg`
     }
 
-    const delClick = async() => {
+    const delClick = async(e: any) => {
+        console.log('dele')
+        e.stopPropagation()
+
         const pageId = props.page.id as number
         const res = await pageApi.del(pageId)
         props.getPages()
+
     }
     return (
         <div className={style.pageItemWrapper}>
