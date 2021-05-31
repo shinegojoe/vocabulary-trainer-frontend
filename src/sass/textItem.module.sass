@@ -1,14 +1,27 @@
+@function cmyk($c, $m, $y, $k) 
+    $c: $c / 100
+    $m: $m / 100
+    $y: $y / 100
+    $k: $k / 100
+    $r: 255 * (1 - $c) * (1 - $k)
+    $g: 255 * (1 - $m) * (1 - $k)
+    $b: 255 * (1 - $y) * (1 - $k)
+    @return rgb($r, $g, $b)
+
 
 .textItemWrapper
-  background-color: rgba(133, 133, 133, 0.7)
+  background-color: #0b0b0b
+  // background-color: cmyk(10, 40, 20, 0)
+
   display: flex
   align-items: center
   border-radius: 3px
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.5)
-  margin: 10px
-  padding: 10px
+  box-shadow: 1px 1px 4px 0 rgba(136, 136, 136, 0.5)
+  margin: 13px 30px 13px 30px 
+  padding: 10px 36px
   justify-content: space-between
   text-align: left
+  color: white
   .sentenceWrapper
     display: flex
     align-items: center

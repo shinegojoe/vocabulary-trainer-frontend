@@ -141,8 +141,8 @@ const VocabularyItem = (props: IProps) => {
                     return <ScriptItem key={index} script={item} vId={vId} getTextList={getTextList}></ScriptItem>
                 })}
             </div>
-            <div>
-                {isCloseOn && <Button onClick={close}>close</Button>}
+            <div className={style.scriptCloseBtn}>
+                {isCloseOn && <Button color="secondary" variant="contained" onClick={close}>close</Button>}
             </div>
             <DeleteDialog close={closeDelete} ok={deleteVocabulary} isOpen={isDelOpen}></DeleteDialog>
             <EditDialog close={closeEdit} ok={editVocabulary} isOpen={isEditOpen}></EditDialog>

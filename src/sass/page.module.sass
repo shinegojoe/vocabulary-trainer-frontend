@@ -1,12 +1,28 @@
+@function cmyk($c, $m, $y, $k) 
+    $c: $c / 100
+    $m: $m / 100
+    $y: $y / 100
+    $k: $k / 100
+    $r: 255 * (1 - $c) * (1 - $k)
+    $g: 255 * (1 - $m) * (1 - $k)
+    $b: 255 * (1 - $y) * (1 - $k)
+    @return rgb($r, $g, $b)
+
 .pageContainer
     // background-color: #8d8d8d
-    background-color: #b3b3b3
-
+    background-color: #292929
+    // background-color: #9D4D98
     height: calc( 100vh -  64px)
     .addWrapper
         display: flex
         justify-content: center
         align-items: flex-end
+        padding-top: 30px
+        // width: 500px
+        // background-color: red
+
+        button
+            margin-left: 20px
     .pageWrapper
         margin-top: 30px
         display: grid

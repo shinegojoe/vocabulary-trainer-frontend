@@ -116,7 +116,7 @@ const TextItem = (props: IProps) => {
                 </div>
             </div>
             <div>
-                <Button onClick={removeClick}>remove</Button>
+                <Button color="primary" onClick={removeClick}>remove</Button>
             </div>
         </div>
     )

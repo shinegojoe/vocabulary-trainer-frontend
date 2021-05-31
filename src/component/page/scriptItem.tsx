@@ -20,7 +20,7 @@ const ScriptItem = (props: IProps) => {
     return (
         <div className={style.scriptItemWrapper}>
             <div> {props.script.text}</div>
-            <div><Button onClick={addClick}>add</Button></div>
+            <div><Button color="primary" onClick={addClick}>add</Button></div>
         </div>
     )
 }   

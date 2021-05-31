@@ -7,6 +7,34 @@ import Button from '@material-ui/core/Button'
 import PageItem from './pageItem'
 import style from '../../sass/page.module.sass'
 import { withRouter, RouterProps } from "react-router-dom"
+import { makeStyles, withStyles } from '@material-ui/core/styles'
+
+
+const mystyle = makeStyles({
+  root: {
+    color: "#E9E9E9",
+    // backgroundColor: "DodgerBlue",
+  },
+  label: {
+    textTransform: 'capitalize'
+  }
+})
+
+const inputText = makeStyles({
+  root: {
+    color: 'red',
+  },
+  colorSecondary: {
+    borderBottomColor: 'red'
+  }
+  
+})
+
+const NewBtn = withStyles({
+  root: {
+    // backgroundColor: 'red',
+  }
+})(TextField)
 
 
 const Home = (props: RouterProps) => {
@@ -47,24 +75,20 @@ const Home = (props: RouterProps) => {
         })
     }
 
+    const cc = mystyle() 
+
+    const xx = inputText() as any
+
+   
+    
+
     return (
         <div className={style.pageContainer}>
             <div className={style.addWrapper}>
-                <TextField color='secondary' onChange={inputUpdate} id="add-page" label="new page"/>
-                <Button data-testId="add-page-btn" color='secondary' onClick={addClick}>add</Button>
+                <TextField className="MuiInput-underline MuiFormLabel-root" color='secondary' onChange={inputUpdate} id="add-page" label="new page"/>
+                <Button className="qq123" data-testId="add-page-btn" variant="contained" color='secondary' onClick={addClick}>add</Button>
             </div>
-            <div className="testBtn" data-testId="qqBtn">
-                test
-                <span>this is in span</span>
-                <span>222</span>
-
-            </div>
-            <div className="moreTestBtn" data-testId="qqBtn2">
-                test2
-            </div>
-            <div className="moreTestBtn" data-testId="qqBtn3">
-                test3
-            </div>
+            
             <div  className={style.pageWrapper}>
                 {pageList.map((item: Page, index: number)=> {
                     return <div key={index} onClick={()=> {pageClick(item)}}>

@@ -8,7 +8,7 @@ import VocabularyItem from './vocabularyItem'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import style from '../../sass/vocabulary.module.sass'
-
+import '../../sass/textTieldOverride.sass'
 
 
 const PageMain = (props: RouterProps) => {
@@ -57,7 +57,7 @@ const PageMain = (props: RouterProps) => {
             <div className={style.title}>{page.name}</div>
             <div className={style.addWrapper}>
                 <TextField  color='secondary' onChange={inputUpdate} id="add-page" label="new page"/>
-                <Button color='secondary' onClick={addClick}>add</Button>
+                <Button variant="contained" color='secondary' onClick={addClick}>add</Button>
             </div>
             <div>
                 {vocabularyList.map((item, index)=> {
