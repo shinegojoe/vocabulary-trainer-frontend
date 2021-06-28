@@ -13,7 +13,7 @@ let initState: TranslateHint = {
 const updateStyle = (state: TranslateHint, action: IAction<TranslateStyle>) => {
   let newState = {...state}
   newState.left = action.payload.left
-  newState.top = action.payload.top - 30
+  newState.top = action.payload.top - 40
   newState.word = action.payload.word
   newState.isShow = true
   return newState

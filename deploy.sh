@@ -1,5 +1,5 @@
 npm run build
 tar -zcvf build.tar.gz build
-scp build.tar.gz taka@203.204.160.248:/home/taka/project/frontend/vocabulary-trainer
+scp build.tar.gz taka@192.168.0.14:/home/taka/project/frontend/vocabulary-trainer
 
 

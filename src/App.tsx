@@ -23,6 +23,8 @@ function App() {
   }
 
   const isShow = translateHint.isShow
+  // const isShow = true
+
 
 
   return (
