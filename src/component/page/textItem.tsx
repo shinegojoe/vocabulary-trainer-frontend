@@ -12,6 +12,8 @@ import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled'
 import IconButton from '@material-ui/core/IconButton'
 import style from '../../sass/textItem.module.sass'
 import mainStyle from '../../sass/main.module.sass'
+// import '../../sass/textItemIcon.sass'
+import PlaySound from '../../icons/PlaySound'
 
 
 interface IProps {
@@ -111,7 +113,7 @@ const TextItem = (props: IProps) => {
                 <div onMouseUp={mUp} onMouseLeave={mouseLeave}>{textFilter(props.text.text)}</div>
                 <div>
                     <IconButton onClick={playSound}>
-                        <PlayCircleFilledIcon></PlayCircleFilledIcon>
+                        <PlaySound width="30" height="30" color="#e2694a"></PlaySound>
                     </IconButton>
                 </div>
             </div>
