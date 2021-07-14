@@ -8,6 +8,7 @@ import VocabularyItem from './vocabularyItem'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Switch from '@material-ui/core/Switch'
+import ScriptMenu from './scriptMenu'
 
 /* style part ... */
 import style from '../../sass/vocabulary.module.sass'
@@ -15,11 +16,12 @@ import '../../sass/textTieldOverride.sass'
 
 
 const PageMain = (props: RouterProps) => {
-    console.log('page', props)
+    // console.log('page', props)
     const page = props.history.location.state as Page
     const [ vocabularyList, setVocabularyList ] = useState<Vocabulary[]>([])
     const [ vocabulary, setVocabulary ] = useState('')
-    const [hideMode, setHideMode ] = useState(false)
+    const [ hideMode, setHideMode ] = useState(false)
+    const [ scriptName, setScriptName ] = useState<string>('the big bang theory')
     // const inputEl = useRef<any>(null)
     const [ inputEl, setInputEl ] = useState<any>(undefined)
 
@@ -61,6 +63,11 @@ const PageMain = (props: RouterProps) => {
         setHideMode(!hideMode)
     }
 
+    const scriptNameUpdate = (name: string) => {
+        setScriptName(name)
+        console.log('name', name)
+    }
+
     return (
         <div onKeyUp={keyUp} className={style.vocabularyContainer}>
 
@@ -74,13 +81,16 @@ const PageMain = (props: RouterProps) => {
                 />
           
             </div>
+            <div className={style.scriptMenu}>
+                <ScriptMenu title={scriptName} update={scriptNameUpdate}></ScriptMenu>
+            </div>
             <div className={style.addWrapper}>
                 <TextField  color='secondary' onChange={inputUpdate} id="add-page" label="new page"/>
                 <Button variant="contained" color='secondary' onClick={addClick}>add</Button>
             </div>
             <div>
                 {vocabularyList.map((item, index)=> {
-                    return <VocabularyItem key={index} mode={hideMode} vocabulary={item} getVocabularyList={getVocabularyList}></VocabularyItem>
+                    return <VocabularyItem key={index} scriptName={scriptName} mode={hideMode} vocabulary={item} getVocabularyList={getVocabularyList}></VocabularyItem>
                 })}
                 
             </div>

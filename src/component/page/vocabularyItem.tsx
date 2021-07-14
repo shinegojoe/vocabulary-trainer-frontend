@@ -24,6 +24,7 @@ interface IProps {
   vocabulary: Vocabulary;
   getVocabularyList: Function;
   mode: boolean;
+  scriptName: string
 }
 const VocabularyItem = (props: IProps) => {
   const vId = props.vocabulary.id as number
@@ -84,9 +85,11 @@ const VocabularyItem = (props: IProps) => {
   };
 
   const getScriptClick = async () => {
+    // const name = 'the big bang theory'
+    // const name = 'friends'
     try {
       const res = await scriptApi.getScript(
-        "the big bang theory",
+        props.scriptName,
         props.vocabulary.vocabulary
       );
       setScriptList(res.data);
