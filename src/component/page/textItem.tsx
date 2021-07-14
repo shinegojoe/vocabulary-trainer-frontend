@@ -60,49 +60,48 @@ const TextItem = (props: IProps) => {
         let res = text.replace(re, '\'')
         // const x = /./g
         // res = res.replace(x, '.')
+        const x = res.split(':')
+        if(x.length ===2) {
+            return x[1]
+        }
         return res
     }
 
     const mUp = async(e: any) => {
-        console.log('e', e)
-        
+        // console.log('e', e)
+        // const selection = window.getSelection()
+        // const text = selection?.toString()
 
-      
-        const selection = window.getSelection()
-        const text = selection?.toString()
+        // if(text === undefined) {
+        //     return
+        // }
 
-        if(text === undefined) {
-            return
-        }
+        // if(text === '') {
+        //     return
+        // }
 
-        if(text === '') {
-            return
-        }
-
-        const textList = text.split(' ')
-        if(textList.length === 1) {
-            const res = await translateApi.translate(text)
-            console.log(res.data.text)
-            // const action = {
-            //     type: 'test',
-            //     x: e.clientX,
-            //     y: e.clientY,
-            //     word: res.data.text
-            // }
-            const x = e.clientX
-            const y = e.clientY
-            const word = res.data.text
-            const action = translateAction.translateHintUpdate(x, y, word)
-            dispatch(action)
-        }
-        
-
+        // const textList = text.split(' ')
+        // if(textList.length === 1) {
+        //     const res = await translateApi.translate(text)
+        //     console.log(res.data.text)
+        //     // const action = {
+        //     //     type: 'test',
+        //     //     x: e.clientX,
+        //     //     y: e.clientY,
+        //     //     word: res.data.text
+        //     // }
+        //     const x = e.clientX
+        //     const y = e.clientY
+        //     const word = res.data.text
+        //     const action = translateAction.translateHintUpdate(x, y, word)
+        //     dispatch(action)
+        // }
     }
 
     const mouseLeave = () => {
-        console.log('leave')
-        const action = translateAction.isShow(false)
-        dispatch(action)
+        // console.log('leave')
+        // const action = translateAction.isShow(false)
+        // dispatch(action)
     }
 
     

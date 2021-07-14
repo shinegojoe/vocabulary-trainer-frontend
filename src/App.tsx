@@ -6,6 +6,7 @@ import style from '../src/sass/app.module.sass'
 import { useSelector } from 'react-redux'
 import TranslateHintItem from './component/page/translateHintItem'
 import { TranslateHint, TranslateStyle } from './action/translateStyle.action'
+import XXX from './component/cssTest'
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
       {isShow && <div className={style.hint} style={translateStyle}>
          <TranslateHintItem word={translateStyle.word}></TranslateHintItem>
       </div>}
+      {/* <XXX></XXX> */}
       
     </div>
   );

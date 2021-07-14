@@ -24,7 +24,7 @@ export type  Text = {
 export type Vocabulary = {
     id?: number
     vocabulary: string
-    checked: boolean
+    checked: number
     pageId: number
 }
 
